@@ -1,0 +1,1257 @@
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap');
+
+#erge-root {
+  --bg: #F5FAF8;
+  --surface: #FFFFFF;
+  --surface-alt: #EAF3F0;
+  --ink: #16302C;
+  --ink-soft: #5B7570;
+  --ink-faint: #91A5A0;
+  --primary: #2B6E71;
+  --primary-dark: #1D4E50;
+  --primary-soft: #DCEEEA;
+  --blue: #6FA0C7;
+  --blue-soft: #E3EDF6;
+  --success: #4E9A6B;
+  --success-soft: #E1F0E4;
+  --warning: #D9A441;
+  --warning-soft: #FBF0DC;
+  --danger: #C96A5C;
+  --danger-soft: #F8E4E0;
+  --border: #DCE9E5;
+  --radius: 16px;
+  font-family: 'Inter', sans-serif;
+  color: var(--ink);
+  background: var(--bg);
+  min-height: 100vh;
+  box-sizing: border-box;
+}
+#erge-root *, #erge-root *::before, #erge-root *::after { box-sizing: border-box; }
+#erge-root .font-display { font-family: 'Fraunces', serif; }
+#erge-root .font-mono { font-family: 'IBM Plex Mono', monospace; }
+
+#erge-root { max-width: 480px; margin: 0 auto; padding-bottom: 90px; position: relative; }
+
+/* ---------- Header ---------- */
+#erge-root .app-header {
+  padding: 20px 18px 14px;
+  background: linear-gradient(160deg, var(--primary-dark) 0%, var(--primary) 100%);
+  color: #fff;
+  border-radius: 0 0 28px 28px;
+}
+#erge-root .app-header .top-row {
+  display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 14px;
+}
+#erge-root .app-title { font-family: 'Fraunces', serif; font-size: 21px; font-weight: 600; letter-spacing: 0.2px; }
+#erge-root .app-sub { font-size: 12.5px; color: #CFE6E0; margin-top: 2px; }
+#erge-root .date-pill {
+  font-family: 'IBM Plex Mono', monospace; font-size: 11.5px; background: rgba(255,255,255,0.14);
+  padding: 5px 10px; border-radius: 20px; white-space: nowrap;
+}
+
+#erge-root .hero-card {
+  background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.16);
+  border-radius: 20px; padding: 16px; display: flex; gap: 16px; align-items: center;
+}
+#erge-root .ring-wrap { position: relative; width: 92px; height: 92px; flex-shrink: 0; }
+#erge-root .ring-wrap svg { transform: rotate(-90deg); }
+#erge-root .ring-center {
+  position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center;
+}
+#erge-root .ring-center .num { font-family: 'IBM Plex Mono', monospace; font-size: 19px; font-weight: 600; }
+#erge-root .ring-center .lbl { font-size: 8.5px; color: #CFE6E0; letter-spacing: 0.5px; }
+#erge-root .hero-text { flex: 1; }
+#erge-root .hero-day { font-family: 'Fraunces', serif; font-size: 17px; font-weight: 600; margin-bottom: 2px; }
+#erge-root .hero-msg { font-size: 12.5px; color: #DCEFEA; line-height: 1.4; }
+#erge-root .legend-row { display: flex; gap: 10px; margin-top: 10px; flex-wrap: wrap; }
+#erge-root .legend-item { display: flex; align-items: center; gap: 5px; font-size: 10.5px; color: #DCEFEA; }
+#erge-root .legend-dot { width: 8px; height: 8px; border-radius: 50%; }
+
+/* ---------- Tabs ---------- */
+#erge-root .tabbar {
+  display: flex; gap: 6px; overflow-x: auto; padding: 14px 14px 4px; scrollbar-width: none;
+}
+#erge-root .tabbar::-webkit-scrollbar { display: none; }
+#erge-root .tab-btn {
+  display: flex; align-items: center; gap: 6px; padding: 8px 13px; border-radius: 999px;
+  border: 1px solid var(--border); background: var(--surface); color: var(--ink-soft);
+  font-size: 12.5px; font-weight: 600; white-space: nowrap; cursor: pointer; flex-shrink: 0;
+  transition: all .15s ease;
+}
+#erge-root .tab-btn svg { width: 14px; height: 14px; }
+#erge-root .tab-btn.active { background: var(--primary); color: #fff; border-color: var(--primary); }
+
+/* ---------- Content ---------- */
+#erge-root .content { padding: 14px 16px 10px; }
+#erge-root .section-title {
+  font-family: 'Fraunces', serif; font-size: 16.5px; font-weight: 600; margin: 18px 0 10px;
+  display: flex; align-items: center; justify-content: space-between;
+}
+#erge-root .section-title:first-child { margin-top: 4px; }
+#erge-root .section-title .sub { font-family: 'Inter'; font-size: 11px; font-weight: 500; color: var(--ink-faint); }
+
+#erge-root .card {
+  background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius);
+  padding: 14px; margin-bottom: 10px;
+}
+#erge-root .card-tight { padding: 11px 14px; }
+
+/* Progress bar */
+#erge-root .pbar-track { width: 100%; height: 8px; background: var(--surface-alt); border-radius: 6px; overflow: hidden; }
+#erge-root .pbar-fill { height: 100%; border-radius: 6px; transition: width .3s ease; }
+
+/* Timeline */
+#erge-root .timeline-item {
+  display: flex; align-items: center; gap: 12px; padding: 10px 0; border-bottom: 1px solid var(--border);
+}
+#erge-root .timeline-item:last-child { border-bottom: none; }
+#erge-root .tl-time { font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: var(--ink-faint); width: 42px; flex-shrink: 0; }
+#erge-root .tl-icon {
+  width: 34px; height: 34px; border-radius: 10px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+}
+#erge-root .tl-icon svg { width: 17px; height: 17px; }
+#erge-root .tl-body { flex: 1; min-width: 0; }
+#erge-root .tl-label { font-size: 13.5px; font-weight: 600; }
+#erge-root .tl-label.done { text-decoration: line-through; color: var(--ink-faint); }
+#erge-root .tl-type { font-size: 10.5px; color: var(--ink-faint); }
+#erge-root .check-btn {
+  width: 26px; height: 26px; border-radius: 50%; border: 2px solid var(--border); background: #fff;
+  display: flex; align-items: center; justify-content: center; cursor: pointer; flex-shrink: 0; transition: all .15s;
+}
+#erge-root .check-btn.checked { background: var(--success); border-color: var(--success); }
+#erge-root .check-btn svg { width: 13px; height: 13px; color: #fff; }
+
+/* Buttons */
+#erge-root .btn {
+  font-family: 'Inter'; font-weight: 600; font-size: 13px; padding: 10px 16px; border-radius: 12px;
+  border: none; cursor: pointer; display: inline-flex; align-items: center; gap: 6px; transition: opacity .15s;
+}
+#erge-root .btn:active { opacity: 0.8; }
+#erge-root .btn-primary { background: var(--primary); color: #fff; }
+#erge-root .btn-ghost { background: var(--surface-alt); color: var(--primary-dark); }
+#erge-root .btn-block { width: 100%; justify-content: center; }
+#erge-root .btn svg { width: 15px; height: 15px; }
+#erge-root .btn-sm { padding: 6px 11px; font-size: 11.5px; border-radius: 9px; }
+
+/* Meds */
+#erge-root .med-row { display: flex; align-items: center; gap: 12px; padding: 10px 0; border-bottom: 1px solid var(--border); }
+#erge-root .med-row:last-child { border-bottom: none; }
+#erge-root .med-dot { width: 38px; height: 38px; border-radius: 11px; background: var(--primary-soft); display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+#erge-root .med-dot svg { width: 18px; height: 18px; color: var(--primary-dark); }
+#erge-root .med-name { font-weight: 700; font-size: 13.5px; }
+#erge-root .med-meta { font-size: 11px; color: var(--ink-faint); margin-top: 1px; }
+#erge-root .med-times { display: flex; gap: 6px; margin-top: 6px; flex-wrap: wrap; }
+#erge-root .time-chip {
+  font-family: 'IBM Plex Mono'; font-size: 10.5px; padding: 4px 9px; border-radius: 8px; border: 1px solid var(--border);
+  background: var(--surface); cursor: pointer; color: var(--ink-soft);
+}
+#erge-root .time-chip.done { background: var(--success-soft); border-color: var(--success); color: var(--success); font-weight: 600; }
+
+/* Adherence badge */
+#erge-root .adherence-badge {
+  font-family: 'IBM Plex Mono'; font-weight: 600; font-size: 20px; padding: 2px 0;
+}
+
+/* Foods */
+#erge-root .food-tabs { display: flex; gap: 6px; margin-bottom: 10px; overflow-x: auto; }
+#erge-root .food-cat-btn {
+  padding: 6px 12px; border-radius: 999px; font-size: 11.5px; font-weight: 600; border: 1px solid var(--border);
+  background: var(--surface); cursor: pointer; white-space: nowrap; color: var(--ink-soft);
+}
+#erge-root .food-cat-btn.active { background: var(--blue); color: #fff; border-color: var(--blue); }
+#erge-root .food-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+#erge-root .food-item { background: var(--surface); border: 1px solid var(--border); border-radius: 13px; padding: 10px; }
+#erge-root .food-item .fi-top { display: flex; align-items: center; gap: 7px; margin-bottom: 4px; }
+#erge-root .food-item .fi-icon { font-size: 17px; }
+#erge-root .food-item .fi-name { font-weight: 700; font-size: 12px; }
+#erge-root .food-item .fi-benefit { font-size: 10.5px; color: var(--ink-faint); line-height: 1.35; }
+#erge-root .safety-dot { width: 7px; height: 7px; border-radius: 50%; display: inline-block; margin-right: 3px; }
+
+#erge-root .forbid-item { display: flex; gap: 10px; padding: 10px 0; border-bottom: 1px solid var(--border); }
+#erge-root .forbid-item:last-child { border-bottom: none; }
+#erge-root .forbid-emoji { font-size: 19px; }
+#erge-root .forbid-name { font-weight: 700; font-size: 13px; color: var(--danger); }
+#erge-root .forbid-why { font-size: 11.5px; color: var(--ink-soft); margin-top: 1px; line-height: 1.35; }
+
+/* Meals */
+#erge-root .meal-block { border: 1px solid var(--border); border-radius: 13px; padding: 12px; margin-bottom: 9px; background: var(--surface); }
+#erge-root .meal-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 7px; }
+#erge-root .meal-name { font-weight: 700; font-size: 13px; display: flex; align-items: center; gap: 6px; }
+#erge-root .meal-tag-row { display: flex; flex-wrap: wrap; gap: 5px; margin: 5px 0; }
+#erge-root .food-chip { font-size: 10.5px; padding: 3px 8px; border-radius: 7px; }
+#erge-root .food-chip.eat { background: var(--success-soft); color: var(--success); }
+#erge-root .food-chip.avoid { background: var(--danger-soft); color: var(--danger); }
+#erge-root .meal-why { font-size: 11px; color: var(--ink-faint); margin-top: 5px; line-height: 1.4; font-style: italic; }
+
+/* Symptoms */
+#erge-root .symptom-row { padding: 10px 0; border-bottom: 1px solid var(--border); }
+#erge-root .symptom-row:last-child { border-bottom: none; }
+#erge-root .symptom-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px; }
+#erge-root .symptom-label { font-size: 13px; font-weight: 600; }
+#erge-root .symptom-val { font-family: 'IBM Plex Mono'; font-size: 12px; font-weight: 600; padding: 2px 8px; border-radius: 7px; }
+#erge-root .slider {
+  width: 100%; -webkit-appearance: none; height: 6px; border-radius: 6px; background: var(--surface-alt); outline: none;
+}
+#erge-root .slider::-webkit-slider-thumb { -webkit-appearance: none; width: 18px; height: 18px; border-radius: 50%; background: var(--primary); cursor: pointer; border: 3px solid #fff; box-shadow: 0 0 0 1px var(--border); }
+#erge-root .slider::-moz-range-thumb { width: 18px; height: 18px; border-radius: 50%; background: var(--primary); cursor: pointer; border: 3px solid #fff; }
+
+/* Habits */
+#erge-root .habit-row { display: flex; align-items: center; gap: 11px; padding: 10px 0; border-bottom: 1px solid var(--border); }
+#erge-root .habit-row:last-child { border-bottom: none; }
+#erge-root .habit-text { flex: 1; font-size: 13px; font-weight: 500; }
+#erge-root .habit-text.done { text-decoration: line-through; color: var(--ink-faint); }
+
+/* Calendar */
+#erge-root .cal-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 5px; }
+#erge-root .cal-dow { text-align: center; font-size: 10px; color: var(--ink-faint); font-weight: 600; padding-bottom: 4px; }
+#erge-root .cal-day {
+  aspect-ratio: 1; border-radius: 9px; display: flex; align-items: center; justify-content: center;
+  font-size: 11.5px; font-weight: 600; cursor: pointer; position: relative; color: var(--ink-soft);
+  background: var(--surface-alt);
+}
+#erge-root .cal-day.green { background: var(--success); color: #fff; }
+#erge-root .cal-day.yellow { background: var(--warning); color: #fff; }
+#erge-root .cal-day.red { background: var(--danger); color: #fff; }
+#erge-root .cal-day.today { box-shadow: 0 0 0 2px var(--primary); }
+#erge-root .cal-day.empty { background: transparent; cursor: default; }
+#erge-root .cal-nav { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; }
+#erge-root .cal-month-label { font-weight: 700; font-size: 13.5px; text-transform: capitalize; }
+#erge-root .icon-btn { width: 28px; height: 28px; border-radius: 8px; border: 1px solid var(--border); background: var(--surface); display: flex; align-items: center; justify-content: center; cursor: pointer; }
+#erge-root .icon-btn svg { width: 14px; height: 14px; color: var(--ink-soft); }
+
+/* Stats */
+#erge-root .stat-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 10px; }
+#erge-root .stat-card { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 12px; }
+#erge-root .stat-num { font-family: 'IBM Plex Mono'; font-size: 22px; font-weight: 600; }
+#erge-root .stat-lbl { font-size: 10.5px; color: var(--ink-faint); margin-top: 2px; }
+#erge-root .bar-chart { display: flex; align-items: flex-end; gap: 6px; height: 90px; margin-top: 8px; }
+#erge-root .bar-col { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: flex-end; height: 100%; gap: 4px; }
+#erge-root .bar-fill { width: 100%; border-radius: 5px 5px 0 0; min-height: 3px; }
+#erge-root .bar-lbl { font-size: 9px; color: var(--ink-faint); }
+
+/* Empty state */
+#erge-root .empty-state { text-align: center; padding: 30px 10px; color: var(--ink-faint); }
+#erge-root .empty-state svg { width: 36px; height: 36px; margin-bottom: 8px; opacity: 0.5; }
+#erge-root .empty-state p { font-size: 12.5px; }
+
+/* Modal */
+#erge-root .modal-overlay {
+  position: fixed; inset: 0; background: rgba(22,48,44,0.45); display: flex; align-items: flex-end;
+  justify-content: center; z-index: 100; backdrop-filter: blur(2px);
+}
+#erge-root .modal-sheet {
+  background: var(--surface); width: 100%; max-width: 480px; border-radius: 22px 22px 0 0; padding: 18px;
+  max-height: 82vh; overflow-y: auto;
+}
+#erge-root .modal-title { font-family: 'Fraunces'; font-size: 16px; font-weight: 600; margin-bottom: 12px; }
+#erge-root .field-label { font-size: 11.5px; font-weight: 600; color: var(--ink-soft); margin-bottom: 4px; display: block; margin-top: 10px; }
+#erge-root .field-input {
+  width: 100%; padding: 9px 11px; border-radius: 10px; border: 1px solid var(--border); font-size: 13px;
+  font-family: 'Inter'; background: var(--bg);
+}
+#erge-root .modal-actions { display: flex; gap: 8px; margin-top: 16px; }
+
+/* Bottom nav */
+#erge-root .bottom-nav {
+  position: fixed; bottom: 0; left: 50%; transform: translateX(-50%); width: 100%; max-width: 480px;
+  background: var(--surface); border-top: 1px solid var(--border); display: flex; padding: 8px 4px 10px;
+  box-shadow: 0 -4px 16px rgba(22,48,44,0.06); z-index: 50;
+}
+#erge-root .nav-item {
+  flex: 1; display: flex; flex-direction: column; align-items: center; gap: 3px; cursor: pointer;
+  color: var(--ink-faint); padding: 4px 0; border: none; background: none; font-family: 'Inter';
+}
+#erge-root .nav-item svg { width: 19px; height: 19px; }
+#erge-root .nav-item span { font-size: 9.5px; font-weight: 600; }
+#erge-root .nav-item.active { color: var(--primary); }
+
+#erge-root .streak-flame { display: inline-flex; align-items: center; gap: 4px; background: var(--warning-soft); color: #A9752A; padding: 4px 10px; border-radius: 999px; font-size: 11.5px; font-weight: 700; }
+
+#erge-root .disclaimer { font-size: 10.5px; color: var(--ink-faint); text-align: center; padding: 14px 20px 4px; line-height: 1.5; }
+
+@media (max-width: 360px) {
+  #erge-root .food-grid { grid-template-columns: 1fr; }
+}
+</style>
+
+<div id="erge-root">
+  <div id="erge-header"></div>
+  <div id="erge-tabbar"></div>
+  <div id="erge-content" class="content"></div>
+  <div class="disclaimer" id="erge-disclaimer" style="display:none;">Esta aplicación es una herramienta de apoyo educativo basada en guías clínicas generales para ERGE y esófago de Barrett. No sustituye la evaluación, diagnóstico ni tratamiento de tu gastroenterólogo.</div>
+  <div id="erge-bottomnav"></div>
+  <div id="erge-modal"></div>
+</div>
+
+<script>
+(function(){
+
+/* ============ ICONS ============ */
+const ICONS = {
+  home: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9.5 12 3l9 6.5"/><path d="M5 10v10a1 1 0 0 0 1 1h4v-6h4v6h4a1 1 0 0 0 1-1V10"/></svg>',
+  clock: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>',
+  pill: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="9" width="18" height="6" rx="3" transform="rotate(45 12 12)"/><path d="M8.5 8.5l7 7"/></svg>',
+  food: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8h1a3 3 0 0 1 0 6h-1"/><path d="M2 8h16v7a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>',
+  heart: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 0 0-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 0 0 0-7.8z"/></svg>',
+  check: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>',
+  checklist: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>',
+  calendar: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>',
+  chart: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>',
+  sun: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.2" y1="4.2" x2="5.6" y2="5.6"/><line x1="18.4" y1="18.4" x2="19.8" y2="19.8"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.2" y1="19.8" x2="5.6" y2="18.4"/><line x1="18.4" y1="5.6" x2="19.8" y2="4.2"/></svg>',
+  moon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3 7 7 0 0 0 21 12.8z"/></svg>',
+  drop: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2s7 8.4 7 13a7 7 0 1 1-14 0c0-4.6 7-13 7-13z"/></svg>',
+  plus: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>',
+  edit: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>',
+  trash: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>',
+  x: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>',
+  chevL: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>',
+  chevR: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>',
+  flame: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 17a2.5 2.5 0 0 0 2.5-2.5c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7.5 7.5 0 1 1-15 0c0-1.153.433-2.294 1-3 1.072-2.143.224-4.054-2-6"/></svg>',
+  activity: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>',
+  empty: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/><path d="M8 15s1.5-2 4-2 4 2 4 2"/></svg>'
+};
+
+/* ============ DEFAULT CONFIG ============ */
+function defaultConfig(){
+  return {
+    startDate: todayISO(),
+    totalDays: 60,
+    meds: [
+      {id:'esomeprazol', name:'Esomeprazol', dose:'40 mg', times:['06:45','18:30'], duration:'60 días', instr:'Tomar 30-60 min antes de desayuno y cena'},
+      {id:'procinetico', name:'Procinético', dose:'10 mg', times:['07:45','13:15','19:30'], duration:'60 días', instr:'Tomar 15-30 min antes de cada comida principal'}
+    ],
+    schedule: [
+      {id:'s1', time:'06:30', label:'Despertar', type:'habit'},
+      {id:'s2', time:'06:45', label:'Esomeprazol', type:'med', medId:'esomeprazol'},
+      {id:'s3', time:'07:30', label:'Desayuno', type:'meal', mealKey:'desayuno'},
+      {id:'s4', time:'07:45', label:'Procinético', type:'med', medId:'procinetico'},
+      {id:'s5', time:'10:30', label:'Refrigerio', type:'meal', mealKey:'refrigerio1'},
+      {id:'s6', time:'13:00', label:'Almuerzo', type:'meal', mealKey:'almuerzo'},
+      {id:'s7', time:'13:15', label:'Procinético', type:'med', medId:'procinetico'},
+      {id:'s8', time:'16:30', label:'Refrigerio', type:'meal', mealKey:'refrigerio2'},
+      {id:'s9', time:'18:30', label:'Esomeprazol', type:'med', medId:'esomeprazol'},
+      {id:'s10', time:'19:15', label:'Cena', type:'meal', mealKey:'cena'},
+      {id:'s11', time:'19:30', label:'Procinético', type:'med', medId:'procinetico'},
+      {id:'s12', time:'22:00', label:'Dormir', type:'habit'}
+    ],
+    habits: [
+      'Elevar la cabecera de la cama (15-20 cm)',
+      'Dormir del lado izquierdo',
+      'Esperar 3 horas después de cenar para acostarme',
+      'Comer despacio y masticar bien',
+      'No fumar',
+      'No consumir alcohol',
+      'No consumir café',
+      'Evitar comidas abundantes (porciones moderadas)',
+      'Beber agua suficiente entre comidas'
+    ]
+  };
+}
+
+const MEAL_LABELS = {desayuno:'Desayuno', refrigerio1:'Refrigerio matutino', almuerzo:'Almuerzo', refrigerio2:'Refrigerio de tarde', cena:'Cena'};
+
+const MEAL_CYCLE = [
+  { desayuno:{comer:['Avena cocida con plátano','Infusión de manzanilla'], evitar:['Café','Jugo de naranja'], porque:'La avena es de bajo residuo y absorbe ácido; el plátano no es ácido y calma la mucosa.'},
+    refrigerio1:{comer:['Yogur natural bajo en grasa','2 galletas de arroz'], evitar:['Yogur con frutas cítricas'], porque:'Bajo en grasa reduce el tiempo de vaciado gástrico y la presión sobre el esfínter esofágico.'},
+    almuerzo:{comer:['Pechuga de pollo al horno','Arroz blanco','Zanahoria y calabaza al vapor'], evitar:['Frituras','Salsas picantes'], porque:'Proteína magra y vegetales no ácidos cocidos son de fácil digestión y bajo potencial de reflujo.'},
+    refrigerio2:{comer:['Manzana horneada','Agua'], evitar:['Cítricos crudos'], porque:'La cocción reduce la acidez natural de la fruta.'},
+    cena:{comer:['Pescado al vapor','Puré de camote','Ensalada de lechuga sin aderezo ácido'], evitar:['Comidas copiosas','Grasas saturadas'], porque:'Cena ligera 3 h antes de dormir reduce la presión intraabdominal nocturna.'} },
+  { desayuno:{comer:['Pan integral tostado con palta','Infusión de anís'], evitar:['Mantequilla en exceso','Café'], porque:'La palta aporta grasas saludables en cantidad moderada, sin sobrecargar la digestión.'},
+    refrigerio1:{comer:['Pera','Agua de agua'], evitar:['Fruta ácida'], porque:'La pera es baja en acidez y rica en fibra soluble.'},
+    almuerzo:{comer:['Filete de pescado al horno','Quinua','Vainitas al vapor'], evitar:['Ají','Tomate'], porque:'Combinación de bajo residuo graso y sin irritantes directos de la mucosa esofágica.'},
+    refrigerio2:{comer:['Galletas integrales','Infusión de manzanilla'], evitar:['Chocolate'], porque:'El chocolate relaja el esfínter esofágico inferior; se sustituye por opciones neutras.'},
+    cena:{comer:['Tortilla de claras','Puré de papa','Espinaca salteada'], evitar:['Frituras','Cebolla cruda'], porque:'Clara de huevo es proteína magra de fácil digestión nocturna.'} },
+  { desayuno:{comer:['Quinua con leche descremada','Plátano'], evitar:['Leche entera en exceso'], porque:'Quinua es de bajo índice de fermentación gástrica.'},
+    refrigerio1:{comer:['Compota de manzana sin azúcar'], evitar:['Cítricos'], porque:'Textura suave y baja acidez, ideal a media mañana.'},
+    almuerzo:{comer:['Pollo a la plancha','Fideos','Brócoli al vapor'], evitar:['Salsas cremosas ácidas','Picantes'], porque:'Brócoli cocido reduce su efecto irritante manteniendo aporte de fibra.'},
+    refrigerio2:{comer:['Papaya (con moderación)','Agua'], evitar:['Piña en exceso'], porque:'Papaya suele tolerarse bien y favorece el tránsito digestivo.'},
+    cena:{comer:['Sopa de verduras con pollo desmenuzado','Arroz'], evitar:['Condimentos picantes'], porque:'Preparación líquida y tibia favorece un vaciado gástrico más cómodo antes de dormir.'} },
+  { desayuno:{comer:['Tostadas integrales con queso fresco bajo en grasa','Infusión suave'], evitar:['Queso maduro/grasoso'], porque:'Quesos bajos en grasa disminuyen la relajación del esfínter esofágico.'},
+    refrigerio1:{comer:['Durazno maduro sin cáscara'], evitar:['Cítricos'], porque:'Fruta madura y pelada reduce fibra irritante y acidez.'},
+    almuerzo:{comer:['Lomo de res magro a la plancha','Puré de zapallo','Ensalada cocida'], evitar:['Grasas visibles','Frituras'], porque:'Cortes magros disminuyen el tiempo de vaciado gástrico.'},
+    refrigerio2:{comer:['Galletas de agua','Infusión de hinojo'], evitar:['Café','Bebidas gaseosas'], porque:'El hinojo es tradicionalmente usado para calmar el sistema digestivo, sin evidencia de irritación.'},
+    cena:{comer:['Crema de zapallo sin crema de leche','Pan tostado'], evitar:['Comidas abundantes tarde'], porque:'Cena ligera y tibia disminuye el riesgo de reflujo nocturno.'} },
+  { desayuno:{comer:['Huevo revuelto (poco aceite)','Pan integral'], evitar:['Tocino','Embutidos'], porque:'Huevo bien cocido y bajo en grasa es mejor tolerado que frituras grasas.'},
+    refrigerio1:{comer:['Plátano','Agua'], evitar:['Frutos secos en exceso'], porque:'El plátano es de los alimentos mejor tolerados en ERGE.'},
+    almuerzo:{comer:['Pavo al horno','Camote','Ensalada de vainitas'], evitar:['Salsas a base de tomate'], porque:'El tomate y sus salsas son altamente ácidos y relajan el esfínter esofágico.'},
+    refrigerio2:{comer:['Yogur natural','Avena en hojuelas'], evitar:['Yogur con cítricos'], porque:'Combinación suave que no distiende el estómago.'},
+    cena:{comer:['Filete de pescado al vapor','Arroz','Zapallito italiano salteado'], evitar:['Ají','Frituras'], porque:'Preparación al vapor reduce grasa añadida y facilita la digestión nocturna.'} },
+  { desayuno:{comer:['Papilla de manzana y avena','Infusión de manzanilla'], evitar:['Café','Cítricos'], porque:'Textura suave, sin acidez, ideal para iniciar el día sin desencadenar síntomas.'},
+    refrigerio1:{comer:['Galletas integrales','Agua'], evitar:['Chocolate'], porque:'Opción neutra que no relaja el esfínter esofágico.'},
+    almuerzo:{comer:['Pechuga de pavo','Arroz','Espárragos al vapor'], evitar:['Cebolla cruda','Picantes'], porque:'La cebolla cruda es un desencadenante frecuente de reflujo.'},
+    refrigerio2:{comer:['Pera cocida'], evitar:['Cítricos crudos'], porque:'La cocción suaviza la fibra y reduce acidez.'},
+    cena:{comer:['Sopa de pollo con verduras','Pan tostado'], evitar:['Comidas muy calientes o picantes'], porque:'Sopas tibias son de fácil digestión y bajo residuo antes de dormir.'} },
+  { desayuno:{comer:['Sándwich de pollo desmenuzado en pan integral'], evitar:['Mayonesa en exceso','Mostaza'], porque:'Aderezos ácidos o picantes pueden desencadenar reflujo temprano en el día.'},
+    refrigerio1:{comer:['Manzana horneada con canela'], evitar:['Cítricos'], porque:'La canela en poca cantidad no irrita y la manzana horneada reduce su acidez.'},
+    almuerzo:{comer:['Merluza al horno','Puré de papa','Vainitas'], evitar:['Frituras','Salsas ácidas'], porque:'Pescado blanco es de fácil digestión y bajo en grasa.'},
+    refrigerio2:{comer:['Infusión de jengibre suave','Galletas de arroz'], evitar:['Bebidas carbonatadas'], porque:'El jengibre en infusión suave puede ayudar a la motilidad; se evita en exceso si irrita.'},
+    cena:{comer:['Tortilla de verduras al horno','Ensalada cocida tibia'], evitar:['Frituras','Comidas copiosas'], porque:'Bajo contenido graso y porción moderada favorecen el descanso nocturno sin reflujo.'} },
+  { desayuno:{comer:['Avena con manzana rallada','Infusión suave'], evitar:['Café','Chocolate'], porque:'Combinación de bajo residuo que no relaja el esfínter esofágico inferior.'},
+    refrigerio1:{comer:['Yogur natural bajo en grasa'], evitar:['Yogur con cítricos o chocolate'], porque:'Aporta proteína sin acidez añadida.'},
+    almuerzo:{comer:['Pollo al horno','Quinua','Zapallo al vapor'], evitar:['Picantes','Frituras'], porque:'Comida completa, de bajo residuo graso y sin irritantes.'},
+    refrigerio2:{comer:['Durazno maduro'], evitar:['Cítricos'], porque:'Fruta madura, baja en acidez, bien tolerada en la mayoría de los casos.'},
+    cena:{comer:['Crema de verduras','Pan integral tostado'], evitar:['Comidas abundantes y tardías'], porque:'Cena ligera reduce la presión intragástrica antes de acostarse.'} }
+];
+
+const SYMPTOMS = [
+  {id:'dolorPecho', label:'Dolor en el pecho'},
+  {id:'ardor', label:'Ardor / acidez'},
+  {id:'nauseas', label:'Náuseas'},
+  {id:'regurgitacion', label:'Regurgitación'},
+  {id:'dolorEstomago', label:'Dolor en boca del estómago'},
+  {id:'dolorTragar', label:'Dolor al tragar'},
+  {id:'tos', label:'Tos'},
+  {id:'ronquera', label:'Ronquera'}
+];
+
+const FOOD_LIBRARY = {
+  proteinas: {label:'Proteínas', icon:ICONS.food, items:[
+    {name:'Pechuga de pollo', icon:'🍗', benefit:'Magra y de fácil digestión', safety:'safe'},
+    {name:'Pescado blanco', icon:'🐟', benefit:'Bajo en grasa, no relaja el EEI', safety:'safe'},
+    {name:'Pavo', icon:'🍗', benefit:'Proteína magra bien tolerada', safety:'safe'},
+    {name:'Claras de huevo', icon:'🥚', benefit:'Baja en grasa vs. huevo entero', safety:'safe'},
+    {name:'Legumbres bien cocidas', icon:'🫘', benefit:'Fibra soluble, moderar cantidad', safety:'moderate'},
+  ]},
+  frutas: {label:'Frutas', icon:'🍎', items:[
+    {name:'Plátano', icon:'🍌', benefit:'No ácido, calma la mucosa', safety:'safe'},
+    {name:'Manzana (sin cáscara)', icon:'🍏', benefit:'Baja acidez, mejor cocida', safety:'safe'},
+    {name:'Pera', icon:'🍐', benefit:'Baja en ácido, rica en fibra', safety:'safe'},
+    {name:'Melón / papaya', icon:'🍈', benefit:'Buena tolerancia general', safety:'moderate'},
+    {name:'Durazno maduro', icon:'🍑', benefit:'Bien tolerado si está maduro', safety:'moderate'},
+  ]},
+  verduras: {label:'Verduras', icon:'🥦', items:[
+    {name:'Zanahoria cocida', icon:'🥕', benefit:'Bajo residuo, no irritante', safety:'safe'},
+    {name:'Zapallo / calabaza', icon:'🎃', benefit:'Suave para la mucosa digestiva', safety:'safe'},
+    {name:'Vainitas al vapor', icon:'🫛', benefit:'Fibra suave bien tolerada', safety:'safe'},
+    {name:'Brócoli cocido', icon:'🥦', benefit:'Mejor tolerado cocido que crudo', safety:'moderate'},
+    {name:'Espinaca cocida', icon:'🥬', benefit:'Rica en nutrientes, baja acidez', safety:'safe'},
+  ]},
+  carbohidratos: {label:'Carbohidratos', icon:'🍚', items:[
+    {name:'Arroz blanco', icon:'🍚', benefit:'Bajo residuo, fácil digestión', safety:'safe'},
+    {name:'Avena', icon:'🥣', benefit:'Absorbe ácido gástrico', safety:'safe'},
+    {name:'Pan integral (moderado)', icon:'🍞', benefit:'Fibra sin exceso de grasa', safety:'safe'},
+    {name:'Quinua', icon:'🌾', benefit:'Bajo índice de fermentación', safety:'safe'},
+    {name:'Papa / camote', icon:'🥔', benefit:'Neutro, sacia sin irritar', safety:'safe'},
+  ]},
+  bebidas: {label:'Bebidas', icon:'💧', items:[
+    {name:'Agua natural', icon:'💧', benefit:'Hidratación sin acidez', safety:'safe'},
+    {name:'Infusión de manzanilla', icon:'🍵', benefit:'Efecto calmante digestivo', safety:'safe'},
+    {name:'Infusión de anís/hinojo', icon:'🍵', benefit:'Tradicionalmente digestiva', safety:'moderate'},
+    {name:'Leche descremada', icon:'🥛', benefit:'Menor grasa que leche entera', safety:'moderate'},
+  ]}
+};
+
+const FORBIDDEN_FOODS = [
+  {name:'Chocolate', icon:'🍫', why:'Relaja el esfínter esofágico inferior (EEI), facilitando el reflujo.'},
+  {name:'Café / cafeína', icon:'☕', why:'Estimula la secreción ácida y relaja el EEI.'},
+  {name:'Alcohol', icon:'🍷', why:'Irrita la mucosa esofágica y relaja el EEI.'},
+  {name:'Ají / picantes', icon:'🌶️', why:'Irritan directamente la mucosa esofágica inflamada.'},
+  {name:'Tomate y salsas', icon:'🍅', why:'Alta acidez natural que agrava el reflujo.'},
+  {name:'Cítricos', icon:'🍊', why:'Muy ácidos, irritan la mucosa esofágica.'},
+  {name:'Frituras', icon:'🍟', why:'Retrasan el vaciado gástrico y relajan el EEI por su alto contenido graso.'},
+  {name:'Bebidas gaseosas', icon:'🥤', why:'El gas aumenta la presión intragástrica, favoreciendo el reflujo.'},
+  {name:'Menta', icon:'🌿', why:'Relaja el esfínter esofágico inferior pese a su fama "digestiva".'}
+];
+
+/* ============ STATE / STORAGE ============ */
+let CONFIG = null;
+let logsCache = {};
+let activeTab = 'hoy';
+let calMonthOffset = 0;
+let activeFoodCat = 'proteinas';
+
+function todayISO(){ const d=new Date(); return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0'); }
+function addDays(iso, n){ const d=new Date(iso+'T00:00:00'); d.setDate(d.getDate()+n); return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0'); }
+function daysBetween(a,b){ return Math.round((new Date(b+'T00:00:00') - new Date(a+'T00:00:00'))/86400000); }
+function treatmentDay(dateISO){ return Math.min(CONFIG.totalDays, Math.max(1, daysBetween(CONFIG.startDate, dateISO)+1)); }
+function cycleDay(dateISO){ const d = treatmentDay(dateISO); return ((d-1) % MEAL_CYCLE.length); }
+
+function emptyLog(){ return { scheduleDone:{}, medsDone:{}, mealsDone:{}, symptoms:{}, habitsDone:{} }; }
+
+/* ---------- Almacenamiento local (localStorage) ----------
+   Esta app corre de forma independiente en el navegador (GitHub Pages / Vercel),
+   así que los datos se guardan en localStorage del dispositivo donde se abra.
+   No se sincronizan entre dispositivos distintos. */
+const STORAGE_PREFIX = 'erge-app:';
+let saveWarningTimer = null;
+function showSaveWarning(msg){
+  let el = document.getElementById('erge-save-warning');
+  if(!el){
+    el = document.createElement('div');
+    el.id = 'erge-save-warning';
+    el.style.cssText = 'position:fixed; bottom:80px; left:50%; transform:translateX(-50%); max-width:440px; width:90%; background:#F8E4E0; color:#8A3A2E; font-size:12px; font-weight:600; padding:10px 14px; border-radius:12px; z-index:200; text-align:center; box-shadow:0 4px 14px rgba(0,0,0,0.12);';
+    document.body.appendChild(el);
+  }
+  el.textContent = msg;
+  el.style.display = 'block';
+  clearTimeout(saveWarningTimer);
+  saveWarningTimer = setTimeout(()=>{ if(el) el.style.display='none'; }, 5000);
+}
+
+function localGet(key){
+  try{
+    const raw = localStorage.getItem(STORAGE_PREFIX+key);
+    if(raw===null) return null;
+    return raw;
+  }catch(e){
+    return null;
+  }
+}
+function localSet(key, value){
+  try{
+    localStorage.setItem(STORAGE_PREFIX+key, value);
+    return true;
+  }catch(e){
+    console.error('localStorage set failed', key, e);
+    showSaveWarning('No se pudo guardar (el almacenamiento del navegador está lleno o bloqueado). Revisa la configuración de privacidad del navegador.');
+    return false;
+  }
+}
+
+async function loadConfig(){
+  const raw = localGet('config');
+  if(raw){
+    try{ CONFIG = JSON.parse(raw); return; }catch(e){ /* fall through to default */ }
+  }
+  CONFIG = defaultConfig();
+  localSet('config', JSON.stringify(CONFIG));
+}
+async function saveConfig(){
+  localSet('config', JSON.stringify(CONFIG));
+}
+async function getLog(dateISO){
+  if(logsCache[dateISO]) return logsCache[dateISO];
+  const raw = localGet('log:'+dateISO);
+  if(raw){
+    try{ logsCache[dateISO] = JSON.parse(raw); return logsCache[dateISO]; }catch(e){ /* fall through */ }
+  }
+  logsCache[dateISO] = emptyLog();
+  return logsCache[dateISO];
+}
+async function saveLog(dateISO, log){
+  logsCache[dateISO] = log;
+  localSet('log:'+dateISO, JSON.stringify(log));
+}
+
+/* ============ COMPLIANCE HELPERS ============ */
+function totalMedDoses(){ return CONFIG.meds.reduce((s,m)=>s+m.times.length,0); }
+function medsCompliance(log){
+  const total = totalMedDoses(); if(total===0) return 0;
+  const done = Object.values(log.medsDone).filter(Boolean).length;
+  return Math.min(1, done/total);
+}
+function dietCompliance(log){
+  const total = Object.keys(MEAL_LABELS).length;
+  const done = Object.values(log.mealsDone).filter(Boolean).length;
+  return Math.min(1, done/total);
+}
+function habitsCompliance(log){
+  const total = CONFIG.habits.length; if(total===0) return 0;
+  const done = Object.values(log.habitsDone).filter(Boolean).length;
+  return Math.min(1, done/total);
+}
+function overallCompliance(log){ return (medsCompliance(log)+dietCompliance(log)+habitsCompliance(log))/3; }
+function dayStatus(log, hasAnyEntry){
+  if(!hasAnyEntry) return 'none';
+  const o = overallCompliance(log);
+  if(o>=0.85) return 'green';
+  if(o>=0.4) return 'yellow';
+  return 'red';
+}
+function logHasEntries(log){
+  return Object.keys(log.medsDone).length>0 || Object.keys(log.mealsDone).length>0 || Object.keys(log.habitsDone).length>0 || Object.keys(log.scheduleDone).length>0;
+}
+
+function motivationalMsg(pct){
+  if(pct>=90) return 'Excelente disciplina. Tu esófago te lo agradece cada día que cumples el plan.';
+  if(pct>=70) return 'Vas por buen camino. La constancia es la clave para sanar la mucosa esofágica.';
+  if(pct>=40) return 'Cada paso cuenta. Retoma el plan con calma, hoy es una nueva oportunidad.';
+  return 'Empecemos con calma. Marca lo que puedas hoy y avancemos juntos paso a paso.';
+}
+
+/* ============ RENDER: HEADER ============ */
+async function renderHeader(){
+  const date = todayISO();
+  const log = await getLog(date);
+  const tDay = treatmentDay(date);
+  const pct = Math.round(overallCompliance(log)*100);
+  const mPct = medsCompliance(log), dPct = dietCompliance(log), hPct = habitsCompliance(log);
+  const circumference = 2*Math.PI*38;
+  function arc(startFrac, frac, color){
+    const len = circumference*frac;
+    const gap = circumference-len;
+    const offset = -circumference*startFrac;
+    return `<circle cx="46" cy="46" r="38" fill="none" stroke="${color}" stroke-width="7" stroke-dasharray="${len} ${gap}" stroke-dashoffset="${offset}" stroke-linecap="round"/>`;
+  }
+  const third = 1/3;
+  const dateFmt = new Date(date+'T00:00:00').toLocaleDateString('es-ES', {weekday:'long', day:'numeric', month:'long'});
+
+  document.getElementById('erge-header').innerHTML = `
+    <div class="app-header">
+      <div class="top-row">
+        <div>
+          <div class="app-title">Recuperación ERGE</div>
+          <div class="app-sub">Tu acompañante diario de tratamiento</div>
+        </div>
+        <div class="date-pill">${capitalize(dateFmt)}</div>
+      </div>
+      <div class="hero-card">
+        <div class="ring-wrap">
+          <svg width="92" height="92" viewBox="0 0 92 92">
+            <circle cx="46" cy="46" r="38" fill="none" stroke="rgba(255,255,255,0.15)" stroke-width="7"/>
+            ${arc(0, third*mPct, 'var(--warning)')}
+            ${arc(third, third*dPct, '#8FD3A8')}
+            ${arc(2*third, third*hPct, 'var(--blue)')}
+          </svg>
+          <div class="ring-center">
+            <div class="num">${pct}%</div>
+            <div class="lbl">HOY</div>
+          </div>
+        </div>
+        <div class="hero-text">
+          <div class="hero-day">Día ${tDay} de ${CONFIG.totalDays}</div>
+          <div class="hero-msg">${motivationalMsg(pct)}</div>
+        </div>
+      </div>
+      <div class="legend-row">
+        <div class="legend-item"><span class="legend-dot" style="background:var(--warning)"></span>Medicamentos ${Math.round(mPct*100)}%</div>
+        <div class="legend-item"><span class="legend-dot" style="background:#8FD3A8"></span>Alimentación ${Math.round(dPct*100)}%</div>
+        <div class="legend-item"><span class="legend-dot" style="background:var(--blue)"></span>Hábitos ${Math.round(hPct*100)}%</div>
+      </div>
+    </div>
+  `;
+}
+function capitalize(s){ return s.charAt(0).toUpperCase()+s.slice(1); }
+
+/* ============ RENDER: TABBAR ============ */
+function renderTabbar(){
+  const tabs = [
+    {id:'hoy', label:'Hoy', icon:ICONS.home},
+    {id:'horario', label:'Horario', icon:ICONS.clock},
+    {id:'meds', label:'Medicamentos', icon:ICONS.pill},
+    {id:'alimentacion', label:'Alimentación', icon:ICONS.food},
+    {id:'sintomas', label:'Síntomas', icon:ICONS.activity},
+    {id:'habitos', label:'Hábitos', icon:ICONS.checklist},
+    {id:'calendario', label:'Calendario', icon:ICONS.calendar},
+    {id:'stats', label:'Estadísticas', icon:ICONS.chart}
+  ];
+  document.getElementById('erge-tabbar').innerHTML = `
+    <div class="tabbar">
+      ${tabs.map(t=>`<button class="tab-btn ${activeTab===t.id?'active':''}" data-tab="${t.id}">${t.icon}${t.label}</button>`).join('')}
+    </div>
+  `;
+  document.querySelectorAll('#erge-root .tab-btn').forEach(btn=>{
+    btn.addEventListener('click', ()=>{ activeTab = btn.dataset.tab; renderAll(); });
+  });
+}
+
+/* ============ RENDER: BOTTOM NAV ============ */
+function renderBottomNav(){
+  const items = [
+    {id:'hoy', label:'Hoy', icon:ICONS.home},
+    {id:'horario', label:'Horario', icon:ICONS.clock},
+    {id:'meds', label:'Meds', icon:ICONS.pill},
+    {id:'alimentacion', label:'Comidas', icon:ICONS.food},
+    {id:'calendario', label:'Calendario', icon:ICONS.calendar}
+  ];
+  document.getElementById('erge-bottomnav').innerHTML = `
+    <div class="bottom-nav">
+      ${items.map(t=>`<button class="nav-item ${activeTab===t.id?'active':''}" data-tab="${t.id}">${t.icon}<span>${t.label}</span></button>`).join('')}
+    </div>
+  `;
+  document.querySelectorAll('#erge-root .nav-item').forEach(btn=>{
+    btn.addEventListener('click', ()=>{ activeTab = btn.dataset.tab; renderAll(); });
+  });
+  document.getElementById('erge-disclaimer').style.display = 'block';
+}
+
+/* ============ TAB: HOY ============ */
+async function renderHoy(){
+  const date = todayISO();
+  const log = await getLog(date);
+  const cd = cycleDay(date);
+  const meal = MEAL_CYCLE[cd];
+  const nextItem = CONFIG.schedule.find(it => !isItemDone(log, it));
+  const streak = await computeStreak();
+
+  let html = '';
+  html += `<div class="section-title">Panel de recuperación <span class="sub">Día ${treatmentDay(date)}</span></div>`;
+  html += `<div class="card">
+      <div class="pbar-track" style="margin-bottom:10px;"><div class="pbar-fill" style="width:${(treatmentDay(date)/CONFIG.totalDays*100).toFixed(1)}%; background:var(--primary);"></div></div>
+      <div style="display:flex; justify-content:space-between; align-items:center;">
+        <span style="font-size:11.5px; color:var(--ink-faint);">Progreso del tratamiento</span>
+        <span class="streak-flame">${ICONS.flame}${streak} ${streak===1?'día':'días'} seguidos</span>
+      </div>
+    </div>`;
+
+  if(nextItem){
+    html += `<div class="card card-tight" style="display:flex; align-items:center; gap:12px;">
+      <div class="tl-icon" style="background:${typeColor(nextItem.type).soft}"><span style="color:${typeColor(nextItem.type).ink}">${typeIcon(nextItem.type)}</span></div>
+      <div style="flex:1;">
+        <div style="font-size:10.5px; color:var(--ink-faint); font-weight:600;">PRÓXIMO EN TU HORARIO</div>
+        <div style="font-weight:700; font-size:14px;">${nextItem.time} · ${nextItem.label}</div>
+      </div>
+    </div>`;
+  } else {
+    html += `<div class="card card-tight" style="text-align:center; color:var(--success); font-weight:600; font-size:13px;">✓ Completaste todas las actividades de hoy</div>`;
+  }
+
+  html += `<div class="section-title">Comidas de hoy <span class="sub">Ciclo ${cd+1}/7</span></div>`;
+  html += Object.keys(MEAL_LABELS).map(mk=>renderMealBlockMini(mk, meal[mk], log)).join('');
+
+  html += `<div class="section-title">Registrar síntomas de hoy</div>
+    <div class="card card-tight" style="display:flex; align-items:center; justify-content:space-between;">
+      <span style="font-size:12.5px; color:var(--ink-soft);">¿Cómo te sientes hoy?</span>
+      <button class="btn btn-sm btn-primary" id="goto-symptoms">${ICONS.activity} Registrar</button>
+    </div>`;
+
+  document.getElementById('erge-content').innerHTML = html;
+  const gs = document.getElementById('goto-symptoms');
+  if(gs) gs.addEventListener('click', ()=>{ activeTab='sintomas'; renderAll(); });
+
+  document.querySelectorAll('#erge-root [data-meal-toggle]').forEach(el=>{
+    el.addEventListener('click', async ()=>{
+      const mk = el.dataset.mealToggle;
+      log.mealsDone[mk] = !log.mealsDone[mk];
+      await saveLog(date, log);
+      renderHoy();
+      renderHeader();
+    });
+  });
+}
+function typeColor(type){
+  if(type==='med') return {soft:'var(--warning-soft)', ink:'#A9752A'};
+  if(type==='meal') return {soft:'var(--success-soft)', ink:'var(--success)'};
+  return {soft:'var(--blue-soft)', ink:'var(--blue)'};
+}
+function typeIcon(type){
+  if(type==='med') return ICONS.pill;
+  if(type==='meal') return ICONS.food;
+  return ICONS.moon;
+}
+function isItemDone(log, item){
+  if(item.type==='med') return !!log.medsDone[item.medId+'_'+item.time];
+  if(item.type==='meal') return !!log.mealsDone[item.mealKey];
+  return !!log.scheduleDone[item.id];
+}
+function renderMealBlockMini(mealKey, m, log){
+  const done = !!log.mealsDone[mealKey];
+  return `<div class="meal-block">
+    <div class="meal-head">
+      <div class="meal-name">${MEAL_LABELS[mealKey]}</div>
+      <div class="check-btn ${done?'checked':''}" data-meal-toggle="${mealKey}">${done?ICONS.check:''}</div>
+    </div>
+    <div class="meal-tag-row">${m.comer.map(f=>`<span class="food-chip eat">✓ ${f}</span>`).join('')}</div>
+    <div class="meal-tag-row">${m.evitar.map(f=>`<span class="food-chip avoid">✕ ${f}</span>`).join('')}</div>
+    <div class="meal-why">${m.porque}</div>
+  </div>`;
+}
+async function computeStreak(){
+  let streak = 0;
+  let d = todayISO();
+  for(let i=0;i<CONFIG.totalDays;i++){
+    const log = await getLog(d);
+    if(logHasEntries(log) && overallCompliance(log)>=0.7){ streak++; d = addDays(d,-1); }
+    else break;
+  }
+  return streak;
+}
+
+/* ============ TAB: HORARIO ============ */
+async function renderHorario(){
+  const date = todayISO();
+  const log = await getLog(date);
+  let html = `<div class="section-title">Horario de hoy <span class="sub">${CONFIG.schedule.length} actividades</span></div>`;
+  html += `<div class="card">`;
+  html += CONFIG.schedule.slice().sort((a,b)=>a.time.localeCompare(b.time)).map(item=>{
+    const done = isItemDone(log, item);
+    const tc = typeColor(item.type);
+    return `<div class="timeline-item">
+      <div class="tl-time">${item.time}</div>
+      <div class="tl-icon" style="background:${tc.soft}; color:${tc.ink}">${typeIcon(item.type)}</div>
+      <div class="tl-body">
+        <div class="tl-label ${done?'done':''}">${item.label}</div>
+        <div class="tl-type">${item.type==='med'?'Medicamento':item.type==='meal'?'Comida':'Hábito'}</div>
+      </div>
+      <div class="check-btn ${done?'checked':''}" data-sched-toggle="${item.id}" data-item='${JSON.stringify(item).replace(/'/g,"&apos;")}'>${done?ICONS.check:''}</div>
+    </div>`;
+  }).join('');
+  html += `</div>`;
+  html += `<button class="btn btn-ghost btn-block" id="edit-schedule-btn">${ICONS.edit} Editar horario</button>`;
+
+  document.getElementById('erge-content').innerHTML = html;
+  document.querySelectorAll('#erge-root [data-sched-toggle]').forEach(el=>{
+    el.addEventListener('click', async ()=>{
+      const item = JSON.parse(el.dataset.item.replace(/&apos;/g,"'"));
+      if(item.type==='med'){ log.medsDone[item.medId+'_'+item.time] = !log.medsDone[item.medId+'_'+item.time]; }
+      else if(item.type==='meal'){ log.mealsDone[item.mealKey] = !log.mealsDone[item.mealKey]; }
+      else { log.scheduleDone[item.id] = !log.scheduleDone[item.id]; }
+      await saveLog(date, log);
+      renderHorario();
+      renderHeader();
+    });
+  });
+  document.getElementById('edit-schedule-btn').addEventListener('click', openScheduleEditor);
+}
+
+function openScheduleEditor(){
+  const rows = CONFIG.schedule.slice().sort((a,b)=>a.time.localeCompare(b.time));
+  document.getElementById('erge-modal').innerHTML = `
+    <div class="modal-overlay" id="modal-overlay">
+      <div class="modal-sheet">
+        <div class="modal-title">Editar horario</div>
+        ${rows.map(it=>`
+          <div style="display:flex; gap:8px; align-items:center; margin-bottom:8px;">
+            <input class="field-input" style="width:80px;" type="time" value="${it.time}" data-edit-time="${it.id}"/>
+            <input class="field-input" style="flex:1;" type="text" value="${it.label}" data-edit-label="${it.id}"/>
+            <button class="icon-btn" data-del-sched="${it.id}">${ICONS.trash}</button>
+          </div>`).join('')}
+        <button class="btn btn-ghost btn-block" id="add-sched-item" style="margin-top:6px;">${ICONS.plus} Agregar actividad</button>
+        <div class="modal-actions">
+          <button class="btn btn-ghost" style="flex:1;" id="close-modal">Cancelar</button>
+          <button class="btn btn-primary" style="flex:1;" id="save-schedule">Guardar cambios</button>
+        </div>
+      </div>
+    </div>`;
+  document.getElementById('close-modal').addEventListener('click', closeModal);
+  document.getElementById('modal-overlay').addEventListener('click', (e)=>{ if(e.target.id==='modal-overlay') closeModal(); });
+  document.querySelectorAll('[data-del-sched]').forEach(b=>b.addEventListener('click', ()=>{
+    CONFIG.schedule = CONFIG.schedule.filter(s=>s.id!==b.dataset.delSched);
+    openScheduleEditor();
+  }));
+  document.getElementById('add-sched-item').addEventListener('click', ()=>{
+    CONFIG.schedule.push({id:'s'+Date.now(), time:'12:00', label:'Nueva actividad', type:'habit'});
+    openScheduleEditor();
+  });
+  document.getElementById('save-schedule').addEventListener('click', async ()=>{
+    document.querySelectorAll('[data-edit-time]').forEach(inp=>{
+      const it = CONFIG.schedule.find(s=>s.id===inp.dataset.editTime);
+      if(it) it.time = inp.value;
+    });
+    document.querySelectorAll('[data-edit-label]').forEach(inp=>{
+      const it = CONFIG.schedule.find(s=>s.id===inp.dataset.editLabel);
+      if(it) it.label = inp.value;
+    });
+    await saveConfig();
+    closeModal();
+    renderHorario();
+  });
+}
+function closeModal(){ document.getElementById('erge-modal').innerHTML = ''; }
+
+/* ============ TAB: MEDICAMENTOS ============ */
+async function renderMeds(){
+  const date = todayISO();
+  const log = await getLog(date);
+  const adherence = await computeAdherence(7);
+  let html = `<div class="section-title">Cumplimiento (7 días) <span class="sub"></span></div>`;
+  html += `<div class="card" style="display:flex; align-items:center; justify-content:space-between;">
+    <div>
+      <div class="adherence-badge" style="color:${adherence>=80?'var(--success)':adherence>=50?'var(--warning)':'var(--danger)'}">${adherence}%</div>
+      <div style="font-size:11px; color:var(--ink-faint);">Adherencia promedio semanal</div>
+    </div>
+    <div style="width:60%;">
+      <div class="pbar-track"><div class="pbar-fill" style="width:${adherence}%; background:${adherence>=80?'var(--success)':adherence>=50?'var(--warning)':'var(--danger)'};"></div></div>
+    </div>
+  </div>`;
+
+  html += `<div class="section-title">Medicamentos de hoy</div>`;
+  html += `<div class="card">`;
+  html += CONFIG.meds.map(med=>{
+    return `<div class="med-row" style="flex-direction:column; align-items:stretch;">
+      <div style="display:flex; gap:12px; align-items:center;">
+        <div class="med-dot">${ICONS.pill}</div>
+        <div style="flex:1;">
+          <div class="med-name">${med.name} <span style="font-weight:500; color:var(--ink-faint);">· ${med.dose}</span></div>
+          <div class="med-meta">${med.instr||''} · ${med.duration}</div>
+        </div>
+        <button class="icon-btn" data-edit-med="${med.id}">${ICONS.edit}</button>
+      </div>
+      <div class="med-times">
+        ${med.times.map(t=>{
+          const key = med.id+'_'+t; const done = !!log.medsDone[key];
+          return `<div class="time-chip ${done?'done':''}" data-med-time="${key}">${t} ${done?'✓':''}</div>`;
+        }).join('')}
+      </div>
+    </div>`;
+  }).join('');
+  html += `</div>`;
+  html += `<button class="btn btn-ghost btn-block" id="add-med-btn">${ICONS.plus} Agregar medicamento</button>`;
+
+  document.getElementById('erge-content').innerHTML = html;
+  document.querySelectorAll('[data-med-time]').forEach(el=>{
+    el.addEventListener('click', async ()=>{
+      const key = el.dataset.medTime;
+      log.medsDone[key] = !log.medsDone[key];
+      await saveLog(date, log);
+      renderMeds();
+      renderHeader();
+    });
+  });
+  document.querySelectorAll('[data-edit-med]').forEach(el=>el.addEventListener('click', ()=>openMedEditor(el.dataset.editMed)));
+  document.getElementById('add-med-btn').addEventListener('click', ()=>openMedEditor(null));
+}
+async function computeAdherence(days){
+  let total=0, done=0;
+  let d = todayISO();
+  for(let i=0;i<days;i++){
+    const log = await getLog(d);
+    total += totalMedDoses();
+    done += Object.values(log.medsDone).filter(Boolean).length;
+    d = addDays(d,-1);
+  }
+  if(total===0) return 0;
+  return Math.round((done/total)*100);
+}
+function openMedEditor(medId){
+  const med = medId ? CONFIG.meds.find(m=>m.id===medId) : {id:'med'+Date.now(), name:'', dose:'', times:['08:00'], duration:'60 días', instr:''};
+  document.getElementById('erge-modal').innerHTML = `
+    <div class="modal-overlay" id="modal-overlay">
+      <div class="modal-sheet">
+        <div class="modal-title">${medId?'Editar':'Agregar'} medicamento</div>
+        <label class="field-label">Nombre</label>
+        <input class="field-input" id="m-name" value="${med.name}"/>
+        <label class="field-label">Dosis</label>
+        <input class="field-input" id="m-dose" value="${med.dose}"/>
+        <label class="field-label">Horarios (separados por coma)</label>
+        <input class="field-input" id="m-times" value="${med.times.join(', ')}"/>
+        <label class="field-label">Duración del tratamiento</label>
+        <input class="field-input" id="m-duration" value="${med.duration}"/>
+        <label class="field-label">Indicación</label>
+        <input class="field-input" id="m-instr" value="${med.instr||''}"/>
+        <div class="modal-actions">
+          ${medId?`<button class="btn btn-ghost" id="del-med" style="color:var(--danger);">${ICONS.trash} Eliminar</button>`:''}
+          <button class="btn btn-primary btn-block" id="save-med">Guardar</button>
+        </div>
+      </div>
+    </div>`;
+  document.getElementById('modal-overlay').addEventListener('click', (e)=>{ if(e.target.id==='modal-overlay') closeModal(); });
+  const delBtn = document.getElementById('del-med');
+  if(delBtn) delBtn.addEventListener('click', async ()=>{
+    CONFIG.meds = CONFIG.meds.filter(m=>m.id!==medId);
+    await saveConfig(); closeModal(); renderMeds();
+  });
+  document.getElementById('save-med').addEventListener('click', async ()=>{
+    const name = document.getElementById('m-name').value.trim();
+    if(!name) return;
+    const newMed = {
+      id: med.id, name,
+      dose: document.getElementById('m-dose').value.trim(),
+      times: document.getElementById('m-times').value.split(',').map(s=>s.trim()).filter(Boolean),
+      duration: document.getElementById('m-duration').value.trim(),
+      instr: document.getElementById('m-instr').value.trim()
+    };
+    const idx = CONFIG.meds.findIndex(m=>m.id===med.id);
+    if(idx>=0) CONFIG.meds[idx] = newMed; else CONFIG.meds.push(newMed);
+    await saveConfig();
+    closeModal();
+    renderMeds();
+  });
+}
+
+/* ============ TAB: ALIMENTACIÓN ============ */
+async function renderAlimentacion(){
+  const date = todayISO();
+  const cd = cycleDay(date);
+  const meal = MEAL_CYCLE[cd];
+  const log = await getLog(date);
+
+  let html = `<div class="section-title">Plan de hoy <span class="sub">Ciclo ${cd+1}/7 · se repite semanalmente</span></div>`;
+  html += Object.keys(MEAL_LABELS).map(mk=>renderMealBlockMini(mk, meal[mk], log)).join('');
+
+  html += `<div class="section-title">Alimentos permitidos</div>`;
+  html += `<div class="food-tabs">${Object.keys(FOOD_LIBRARY).map(k=>`<button class="food-cat-btn ${activeFoodCat===k?'active':''}" data-food-cat="${k}">${FOOD_LIBRARY[k].label}</button>`).join('')}</div>`;
+  html += `<div class="food-grid">${FOOD_LIBRARY[activeFoodCat].items.map(it=>`
+    <div class="food-item">
+      <div class="fi-top"><span class="fi-icon">${it.icon}</span><span class="fi-name">${it.name}</span></div>
+      <div class="fi-benefit"><span class="safety-dot" style="background:${it.safety==='safe'?'var(--success)':'var(--warning)'}"></span>${it.benefit}</div>
+    </div>`).join('')}</div>`;
+
+  html += `<div class="section-title">Alimentos a evitar</div>`;
+  html += `<div class="card">${FORBIDDEN_FOODS.map(f=>`
+    <div class="forbid-item">
+      <div class="forbid-emoji">${f.icon}</div>
+      <div><div class="forbid-name">${f.name}</div><div class="forbid-why">${f.why}</div></div>
+    </div>`).join('')}</div>`;
+
+  document.getElementById('erge-content').innerHTML = html;
+  document.querySelectorAll('[data-meal-toggle]').forEach(el=>{
+    el.addEventListener('click', async ()=>{
+      const mk = el.dataset.mealToggle;
+      log.mealsDone[mk] = !log.mealsDone[mk];
+      await saveLog(date, log);
+      renderAlimentacion();
+      renderHeader();
+    });
+  });
+  document.querySelectorAll('[data-food-cat]').forEach(el=>{
+    el.addEventListener('click', ()=>{ activeFoodCat = el.dataset.foodCat; renderAlimentacion(); });
+  });
+}
+
+/* ============ TAB: SÍNTOMAS ============ */
+async function renderSintomas(){
+  const date = todayISO();
+  const log = await getLog(date);
+  let html = `<div class="section-title">Registro de síntomas de hoy</div>`;
+  html += `<div class="card">`;
+  html += SYMPTOMS.map(s=>{
+    const val = log.symptoms[s.id] ?? 0;
+    const color = val<=3?'var(--success)':val<=6?'var(--warning)':'var(--danger)';
+    return `<div class="symptom-row">
+      <div class="symptom-top">
+        <span class="symptom-label">${s.label}</span>
+        <span class="symptom-val" style="background:${color}22; color:${color};">${val}/10</span>
+      </div>
+      <input type="range" min="0" max="10" value="${val}" class="slider" data-symptom="${s.id}"/>
+    </div>`;
+  }).join('');
+  html += `</div>`;
+
+  const trend = await computeSymptomTrend(14);
+  html += `<div class="section-title">Evolución (últimos 14 días) <span class="sub">Promedio diario</span></div>`;
+  html += `<div class="card"><div class="bar-chart">
+    ${trend.map(t=>{
+      const h = Math.max(3, (t.avg/10)*90);
+      const color = t.avg<=3?'var(--success)':t.avg<=6?'var(--warning)':'var(--danger)';
+      return `<div class="bar-col"><div class="bar-fill" style="height:${h}px; background:${t.hasData?color:'var(--surface-alt)'};"></div><div class="bar-lbl">${t.dayLbl}</div></div>`;
+    }).join('')}
+  </div></div>`;
+
+  document.getElementById('erge-content').innerHTML = html;
+  document.querySelectorAll('[data-symptom]').forEach(el=>{
+    const row = el.closest('.symptom-row');
+    const valEl = row.querySelector('.symptom-val');
+    el.addEventListener('input', ()=>{
+      const val = parseInt(el.value,10);
+      log.symptoms[el.dataset.symptom] = val;
+      const color = val<=3?'var(--success)':val<=6?'var(--warning)':'var(--danger)';
+      valEl.textContent = val+'/10';
+      valEl.style.background = color+'22';
+      valEl.style.color = color;
+    });
+    el.addEventListener('change', async ()=>{
+      await saveLog(date, log);
+      renderSintomas();
+    });
+  });
+}
+async function computeSymptomTrend(days){
+  const out = [];
+  let d = addDays(todayISO(), -(days-1));
+  for(let i=0;i<days;i++){
+    const log = await getLog(d);
+    const vals = Object.values(log.symptoms);
+    const hasData = vals.length>0;
+    const avg = hasData ? vals.reduce((a,b)=>a+b,0)/vals.length : 0;
+    out.push({dayLbl: new Date(d+'T00:00:00').getDate(), avg, hasData});
+    d = addDays(d,1);
+  }
+  return out;
+}
+
+/* ============ TAB: HÁBITOS ============ */
+async function renderHabitos(){
+  const date = todayISO();
+  const log = await getLog(date);
+  let html = `<div class="section-title">Hábitos saludables de hoy <span class="sub">${Object.values(log.habitsDone).filter(Boolean).length}/${CONFIG.habits.length}</span></div>`;
+  html += `<div class="card">`;
+  html += CONFIG.habits.map((h,idx)=>{
+    const done = !!log.habitsDone[idx];
+    return `<div class="habit-row">
+      <div class="check-btn ${done?'checked':''}" data-habit-toggle="${idx}">${done?ICONS.check:''}</div>
+      <div class="habit-text ${done?'done':''}">${h}</div>
+    </div>`;
+  }).join('');
+  html += `</div>`;
+  html += `<button class="btn btn-ghost btn-block" id="edit-habits-btn">${ICONS.edit} Editar lista de hábitos</button>`;
+
+  document.getElementById('erge-content').innerHTML = html;
+  document.querySelectorAll('[data-habit-toggle]').forEach(el=>{
+    el.addEventListener('click', async ()=>{
+      const idx = el.dataset.habitToggle;
+      log.habitsDone[idx] = !log.habitsDone[idx];
+      await saveLog(date, log);
+      renderHabitos();
+      renderHeader();
+    });
+  });
+  document.getElementById('edit-habits-btn').addEventListener('click', openHabitsEditor);
+}
+function openHabitsEditor(){
+  document.getElementById('erge-modal').innerHTML = `
+    <div class="modal-overlay" id="modal-overlay">
+      <div class="modal-sheet">
+        <div class="modal-title">Editar hábitos</div>
+        ${CONFIG.habits.map((h,i)=>`
+          <div style="display:flex; gap:8px; align-items:center; margin-bottom:8px;">
+            <input class="field-input" style="flex:1;" type="text" value="${h}" data-habit-edit="${i}"/>
+            <button class="icon-btn" data-habit-del="${i}">${ICONS.trash}</button>
+          </div>`).join('')}
+        <button class="btn btn-ghost btn-block" id="add-habit-item">${ICONS.plus} Agregar hábito</button>
+        <div class="modal-actions">
+          <button class="btn btn-ghost" style="flex:1;" id="close-modal">Cancelar</button>
+          <button class="btn btn-primary" style="flex:1;" id="save-habits">Guardar cambios</button>
+        </div>
+      </div>
+    </div>`;
+  document.getElementById('close-modal').addEventListener('click', closeModal);
+  document.getElementById('modal-overlay').addEventListener('click', (e)=>{ if(e.target.id==='modal-overlay') closeModal(); });
+  document.querySelectorAll('[data-habit-del]').forEach(b=>b.addEventListener('click', ()=>{
+    CONFIG.habits.splice(parseInt(b.dataset.habitDel,10),1);
+    openHabitsEditor();
+  }));
+  document.getElementById('add-habit-item').addEventListener('click', ()=>{
+    CONFIG.habits.push('Nuevo hábito');
+    openHabitsEditor();
+  });
+  document.getElementById('save-habits').addEventListener('click', async ()=>{
+    document.querySelectorAll('[data-habit-edit]').forEach(inp=>{
+      CONFIG.habits[parseInt(inp.dataset.habitEdit,10)] = inp.value;
+    });
+    await saveConfig();
+    closeModal();
+    renderHabitos();
+  });
+}
+
+/* ============ TAB: CALENDARIO ============ */
+async function renderCalendario(){
+  const base = new Date();
+  base.setMonth(base.getMonth()+calMonthOffset);
+  const year = base.getFullYear(), month = base.getMonth();
+  const first = new Date(year, month, 1);
+  const startWeekday = first.getDay(); // 0=Sun
+  const daysInMonth = new Date(year, month+1, 0).getDate();
+  const monthLabel = base.toLocaleDateString('es-ES', {month:'long', year:'numeric'});
+  const dows = ['D','L','M','M','J','V','S'];
+
+  let cells = [];
+  for(let i=0;i<startWeekday;i++) cells.push(null);
+  for(let d=1; d<=daysInMonth; d++) cells.push(d);
+
+  const today = todayISO();
+  let statuses = {};
+  for(let d=1; d<=daysInMonth; d++){
+    const iso = `${year}-${String(month+1).padStart(2,'0')}-${String(d).padStart(2,'0')}`;
+    const log = await getLog(iso);
+    statuses[d] = dayStatus(log, logHasEntries(log));
+  }
+
+  let html = `<div class="section-title">Calendario de cumplimiento</div>`;
+  html += `<div class="card">
+    <div class="cal-nav">
+      <button class="icon-btn" id="cal-prev">${ICONS.chevL}</button>
+      <div class="cal-month-label">${monthLabel}</div>
+      <button class="icon-btn" id="cal-next">${ICONS.chevR}</button>
+    </div>
+    <div class="cal-grid">
+      ${dows.map(d=>`<div class="cal-dow">${d}</div>`).join('')}
+      ${cells.map(d=>{
+        if(d===null) return `<div class="cal-day empty"></div>`;
+        const iso = `${year}-${String(month+1).padStart(2,'0')}-${String(d).padStart(2,'0')}`;
+        const st = statuses[d];
+        const cls = st==='none' ? '' : st;
+        return `<div class="cal-day ${cls} ${iso===today?'today':''}">${d}</div>`;
+      }).join('')}
+    </div>
+    <div class="legend-row" style="margin-top:12px; color:var(--ink-faint);">
+      <div class="legend-item" style="color:var(--ink-soft);"><span class="legend-dot" style="background:var(--success)"></span>Cumplido</div>
+      <div class="legend-item" style="color:var(--ink-soft);"><span class="legend-dot" style="background:var(--warning)"></span>Parcial</div>
+      <div class="legend-item" style="color:var(--ink-soft);"><span class="legend-dot" style="background:var(--danger)"></span>Incumplido</div>
+    </div>
+  </div>`;
+
+  document.getElementById('erge-content').innerHTML = html;
+  document.getElementById('cal-prev').addEventListener('click', ()=>{ calMonthOffset--; renderCalendario(); });
+  document.getElementById('cal-next').addEventListener('click', ()=>{ calMonthOffset = Math.min(0, calMonthOffset+1); renderCalendario(); });
+}
+
+/* ============ TAB: ESTADÍSTICAS ============ */
+async function renderStats(){
+  const days7 = await gatherLogs(7);
+  const days30 = await gatherLogs(30);
+  const streak = await computeStreak();
+
+  const avg = (arr, fn) => arr.length ? Math.round(arr.reduce((s,l)=>s+fn(l),0)/arr.length*100) : 0;
+  const medAvg7 = avg(days7, medsCompliance);
+  const dietAvg7 = avg(days7, dietCompliance);
+  const habitAvg7 = avg(days7, habitsCompliance);
+  const medAvg30 = avg(days30, medsCompliance);
+  const dietAvg30 = avg(days30, dietCompliance);
+  const habitAvg30 = avg(days30, habitsCompliance);
+
+  let html = `<div class="section-title">Resumen general</div>`;
+  html += `<div class="stat-grid">
+    <div class="stat-card"><div class="stat-num" style="color:var(--primary);">${streak}</div><div class="stat-lbl">Días consecutivos cumpliendo</div></div>
+    <div class="stat-card"><div class="stat-num" style="color:var(--success);">${treatmentDay(todayISO())}/${CONFIG.totalDays}</div><div class="stat-lbl">Progreso del tratamiento</div></div>
+  </div>`;
+
+  html += `<div class="section-title">Últimos 7 días</div>`;
+  html += `<div class="card">
+    ${statRow('Medicamentos', medAvg7, 'var(--warning)')}
+    ${statRow('Alimentación', dietAvg7, 'var(--success)')}
+    ${statRow('Hábitos', habitAvg7, 'var(--blue)')}
+  </div>`;
+
+  html += `<div class="section-title">Últimos 30 días</div>`;
+  html += `<div class="card">
+    ${statRow('Medicamentos', medAvg30, 'var(--warning)')}
+    ${statRow('Alimentación', dietAvg30, 'var(--success)')}
+    ${statRow('Hábitos', habitAvg30, 'var(--blue)')}
+  </div>`;
+
+  html += `<div class="section-title">Cumplimiento diario (7 días)</div>`;
+  html += `<div class="card"><div class="bar-chart">
+    ${days7.map((l,i)=>{
+      const o = Math.round(overallCompliance(l)*100);
+      const h = Math.max(3, (o/100)*90);
+      const iso = addDays(todayISO(), -(6-i));
+      const lbl = new Date(iso+'T00:00:00').toLocaleDateString('es-ES',{weekday:'narrow'});
+      const color = o>=85?'var(--success)':o>=40?'var(--warning)':'var(--danger)';
+      return `<div class="bar-col"><div class="bar-fill" style="height:${h}px; background:${color};"></div><div class="bar-lbl">${lbl}</div></div>`;
+    }).join('')}
+  </div></div>`;
+
+  document.getElementById('erge-content').innerHTML = html;
+}
+function statRow(label, pct, color){
+  return `<div style="margin-bottom:11px;">
+    <div style="display:flex; justify-content:space-between; font-size:12px; margin-bottom:4px;">
+      <span style="font-weight:600;">${label}</span><span class="font-mono" style="font-weight:600;">${pct}%</span>
+    </div>
+    <div class="pbar-track"><div class="pbar-fill" style="width:${pct}%; background:${color};"></div></div>
+  </div>`;
+}
+async function gatherLogs(days){
+  const out = [];
+  let d = addDays(todayISO(), -(days-1));
+  for(let i=0;i<days;i++){ out.push(await getLog(d)); d = addDays(d,1); }
+  return out;
+}
+
+/* ============ MAIN RENDER ============ */
+async function renderAll(){
+  renderTabbar();
+  renderBottomNav();
+  if(activeTab==='hoy') await renderHoy();
+  else if(activeTab==='horario') await renderHorario();
+  else if(activeTab==='meds') await renderMeds();
+  else if(activeTab==='alimentacion') await renderAlimentacion();
+  else if(activeTab==='sintomas') await renderSintomas();
+  else if(activeTab==='habitos') await renderHabitos();
+  else if(activeTab==='calendario') await renderCalendario();
+  else if(activeTab==='stats') await renderStats();
+}
+
+async function init(){
+  document.getElementById('erge-content').innerHTML = `<div class="empty-state">${ICONS.empty}<p>Cargando tu plan de recuperación…</p></div>`;
+  await loadConfig();
+  await renderHeader();
+  await renderAll();
+}
+init();
+
+})();
+</script>
