@@ -1,5 +1,13 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Recuperación ERGE — Acompañante de tratamiento</title>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap');
+
+html, body { margin: 0; padding: 0; background: #EDF3F1; }
 
 #erge-root {
   --bg: #F5FAF8;
@@ -273,7 +281,42 @@
 @media (max-width: 360px) {
   #erge-root .food-grid { grid-template-columns: 1fr; }
 }
+
+/* ---------- Escritorio ---------- */
+@media (min-width: 860px) {
+  html, body { min-height: 100vh; display: flex; }
+  #erge-root {
+    max-width: 900px; width: 100%; margin: 28px auto; padding-bottom: 28px;
+    background: var(--surface); border-radius: 24px; box-shadow: 0 20px 60px rgba(22,48,44,0.10);
+    overflow: hidden; border: 1px solid var(--border);
+  }
+  #erge-root .app-header { border-radius: 0; padding: 26px 32px 20px; }
+  #erge-root .hero-card { padding: 20px 24px; }
+  #erge-root .tabbar { padding: 18px 28px 6px; gap: 8px; }
+  #erge-root .tab-btn { padding: 9px 16px; font-size: 13px; }
+  #erge-root .content { padding: 10px 32px 20px; }
+  #erge-root .section-title { font-size: 18px; }
+
+  /* La navegación inferior se convierte en franja fija junto al pie, más ancha */
+  #erge-root .bottom-nav {
+    position: static; transform: none; max-width: none; border-radius: 0 0 24px 24px;
+    justify-content: center; gap: 4px; box-shadow: none; border-top: 1px solid var(--border);
+  }
+  #erge-root .nav-item { flex: 0 1 110px; }
+  #erge-root .disclaimer { padding: 12px 32px 18px; }
+
+  /* Más columnas para aprovechar el ancho */
+  #erge-root .food-grid { grid-template-columns: repeat(3, 1fr); }
+  #erge-root .stat-grid { grid-template-columns: repeat(4, 1fr); }
+
+}
+
+@media (min-width: 1200px) {
+  #erge-root { max-width: 1040px; }
+}
 </style>
+</head>
+<body>
 
 <div id="erge-root">
   <div id="erge-header"></div>
@@ -1255,3 +1298,5 @@ init();
 
 })();
 </script>
+</body>
+</html>
